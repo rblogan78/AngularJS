@@ -25,8 +25,10 @@
             </tr>
             
             <tr>
-               <td>Enter subject: </td>
-               <td><input type = "text" ng-model = "subjectName"></td>
+               <td>Select subject: </td>
+               <td>
+                  <select ng-model="subjectName" ng-options="subject.name for subject in student.subjects"></select>
+               </td>
             </tr>
          </table>
          <br/>
@@ -50,7 +52,7 @@
 
                <td>
                   <ul>
-                     <li ng-repeat = "subject in student.subjects | filter: subjectName |orderBy:'marks'">
+                     <li ng-repeat = "subject in student.subjects | filter: subjectName |orderBy:'name'">
                         {{ subject.name + ', marks:' + subject.marks }}
                      </li>
                   </ul>
@@ -65,9 +67,9 @@
          
          mainApp.controller('studentController', function($scope) {
             $scope.student = {
-               firstName: "Mahesh",
-               lastName: "Parashar",
-               fees:500,
+               firstName: "First",
+               lastName: "Last",
+               fees:000,
                
                subjects:[
                   {name:'Physics',marks:70},
